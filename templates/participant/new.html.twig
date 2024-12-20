@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container mx-auto my-8">
+    <h1 class="text-2xl font-bold text-center mb-4">Ajouter un Participant</h1>
+
+    {{ form_start(form, {'attr': {'class': 'space-y-4'}}) }}
+    <div>
+        {{ form_label(form.name, 'Nom', {'label_attr': {'class': 'block font-bold'}}) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-input border-gray-300 rounded border'}}) }}
+        {{ form_errors(form.name) }}
+    </div>
+
+    <div>
+        {{ form_label(form.email, 'Email', {'label_attr': {'class': 'block font-bold'}}) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-input border-gray-300 rounded border'}}) }}
+        {{ form_errors(form.email) }}
+    </div>
+
+    <button type="submit" class="text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">
+        Enregistrer
+    </button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

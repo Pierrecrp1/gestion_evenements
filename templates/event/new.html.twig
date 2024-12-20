@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container mx-auto my-8">
+    <h1 class="text-2xl font-bold text-center mb-4">Créer un Nouvel Événement</h1>
+
+    {{ form_start(form, {'attr': {'class': 'space-y-4'}}) }}
+
+    <div>
+        {{ form_label(form.name, 'Nom', {'label_attr': {'class': 'block font-bold'}}) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-input border-gray-300 rounded border'}}) }}
+        {{ form_errors(form.name) }}
+    </div>
+
+    <div>
+        {{ form_label(form.date, 'Date', {'label_attr': {'class': 'block font-bold'}}) }}
+        {{ form_widget(form.date, {'attr': {'class': 'form-input border-gray-300 rounded  border'}}) }}
+        {{ form_errors(form.date) }}
+    </div>
+
+    <div>
+        {{ form_label(form.location, 'Lieu', {'label_attr': {'class': 'block font-bold'}}) }}
+        {{ form_widget(form.location, {'attr': {'class': 'form-input border-gray-300 rounded  border'}}) }}
+        {{ form_errors(form.location) }}
+    </div>
+
+    <div>
+        {{ form_label(form.latitude, 'Latitude', {'label_attr': {'class': 'block font-bold'}}) }}
+        {{ form_widget(form.latitude, {'attr': {'class': 'form-input border-gray-300 rounded  border'}}) }}
+        {{ form_errors(form.latitude) }}
+    </div>
+
+    <div>
+        {{ form_label(form.longitude, 'Longitude', {'label_attr': {'class': 'block font-bold'}}) }}
+        {{ form_widget(form.longitude, {'attr': {'class': 'form-input border-gray-300 rounded  border'}}) }}
+        {{ form_errors(form.longitude) }}
+    </div>
+
+    <button type="submit" class="text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">
+        Créer
+    </button>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}

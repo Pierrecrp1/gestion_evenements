@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container mx-auto my-8">
+    <a href="{{ path('event_create') }}" class="text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">Créer un Événement</a>
+
+    <h1 class="text-3xl font-bold text-center mb-6">Liste des Événements</h1>
+
+    <form method="get" action="{{ path('event_list') }}" class="mb-4">
+        <label for="lat" class="font-bold">Votre Latitude :</label>
+        <input type="text" name="lat" id="lat" value="{{ userLat }}" class="form-input border-gray-300 rounded mx-2 border">
+        
+        <label for="lon" class="font-bold">Votre Longitude :</label>
+        <input type="text" name="lon" id="lon" value="{{ userLon }}" class="form-input border-gray-300 rounded mx-2 border">
+
+        <button type="submit" class="text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">Calculer les distances</button>
+    </form>
+
+    <table class="table-auto w-full border-collapse border border-gray-200">
+        <thead>
+            <tr>
+                <th class="border border-gray-300 px-4 py-2">Nom</th>
+                <th class="border border-gray-300 px-4 py-2">Date</th>
+                <th class="border border-gray-300 px-4 py-2">Lieu</th>
+                <th class="border border-gray-300 px-4 py-2">Distance (km)</th>
+                <th class="border border-gray-300 px-4 py-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in events %}
+            <tr>
+                <td class="border border-gray-300 px-4 py-2">{{ item.event.name }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ item.event.date|date('d/m/Y') }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ item.event.location }}</td>
+                <td class="border border-gray-300 px-4 py-2">
+                    {% if item.distance is not null %}
+                        {{ item.distance|number_format(2) }} km
+                    {% else %}
+                        Non calculée
+                    {% endif %}
+                </td>
+                <td class="border border-gray-300 px-4 py-2">
+                    <a href="{{ path('event_view', {id: item.event.id}) }}" class="text-blue-500 hover:underline">Voir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
