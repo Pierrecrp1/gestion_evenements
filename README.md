@@ -37,7 +37,7 @@ Assurez-vous d'avoir les outils suivants installés sur votre machine :
 ### Étape 1 : Cloner le projet
 
 ```bash
-git clone https://github.com/Pierrecrp1/Symfony_reservation_app/settings/access
+git clone https://github.com/Pierrecrp1/gestion_evenements
 cd nom-du-repo
 ```
 
