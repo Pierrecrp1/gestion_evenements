@@ -11,7 +11,6 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // Créer des événements
         for ($i = 1; $i <= 5; $i++) {
             $event = new Event();
             $event->setName("Événement $i");
@@ -20,7 +19,6 @@ class AppFixtures extends Fixture
             $event->setLatitude(48.8566 + mt_rand(-10, 10) / 100);
             $event->setLongitude(2.3522 + mt_rand(-10, 10) / 100);
 
-            // Ajouter des participants à chaque événement
             for ($j = 1; $j <= 3; $j++) {
                 $participant = new Participant();
                 $participant->setName("Participant $j de l'Événement $i");
@@ -33,7 +31,6 @@ class AppFixtures extends Fixture
             $manager->persist($event);
         }
 
-        // Sauvegarder dans la base de données
         $manager->flush();
     }
 }

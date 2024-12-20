@@ -6,7 +6,7 @@ class DistanceCalculator
 {
     public function calculateDistance(float $lat1, float $lon1, float $lat2, float $lon2): float
     {
-        $earthRadius = 6371; // Rayon de la Terre en kilomètres
+        $earthRadius = 6371;
 
         $latDelta = deg2rad($lat2 - $lat1);
         $lonDelta = deg2rad($lon2 - $lon1);

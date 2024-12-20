@@ -23,7 +23,6 @@ class EventController extends AbstractController
         $userLat = $request->query->get('lat');
         $userLon = $request->query->get('lon');
 
-        // Calcul des distances si les coordonnées utilisateur sont fournies
         $eventsWithDistance = [];
         foreach ($events as $event) {
             $distance = null;
@@ -58,7 +57,6 @@ class EventController extends AbstractController
         Request $request,
         DistanceCalculator $distanceCalculator
     ): Response {
-        // Récupérer les coordonnées de l'utilisateur depuis la requête
         $userLat = $request->query->get('lat');
         $userLon = $request->query->get('lon');
 
@@ -66,11 +64,9 @@ class EventController extends AbstractController
             return $this->json(['error' => 'Latitude and longitude are required'], 400);
         }
 
-        // Récupérer les coordonnées de l'événement
         $eventLat = $event->getLatitude();
         $eventLon = $event->getLongitude();
 
-        // Calculer la distance
         $distance = $distanceCalculator->calculateDistance($userLat, $userLon, $eventLat, $eventLon);
 
         return $this->json([
